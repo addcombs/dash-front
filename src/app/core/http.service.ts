@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of} from 'rxjs';
-import { Member } from '../shared/models/member';
+import { User } from '../shared/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -14,41 +14,41 @@ export class HttpService {
     private http: HttpClient
   ) { }
 
-  getAllMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>(this.cassandraUrl + '/members')
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.cassandraUrl + '/users')
     .pipe(
       catchError(error => {
-        console.log('Error caught while getting members: ' + error.error)
+        console.log('Error caught while getting users: ' + error.error)
         return of();
       })
     )
   }
 
-  createNewMember(member: Member){
-    return this.http.post<Member>(this.cassandraUrl + '/addMember', member)
+  createNewUser(user: User): Observable<User> {
+    return this.http.post<User>(this.cassandraUrl + '/addUser', user)
     .pipe(
       catchError(error => {
-        console.log('Error caught while creating member: ' + error.error)
+        console.log('Error caught while creating user: ' + error.error)
         return of();
       })
     )
   }
 
-  removeMember(memberId: String){
-    return this.http.delete<Member>(this.cassandraUrl + '/removeMember/' + memberId)
+  removeUser(userId: String): Observable<User> {
+    return this.http.delete<User>(this.cassandraUrl + '/removeUser/' + userId)
     .pipe(
       catchError(error => {
-        console.log('Error caught while deleting member: ' + error.error)
+        console.log('Error caught while deleting user: ' + error.error)
         return of();
       })
     )
   }
 
-  updateMember(member: Member){
-    return this.http.put<Member>(this.cassandraUrl + '/updateMember', member)
+  updateUser(user: User): Observable<User>{
+    return this.http.put<User>(this.cassandraUrl + '/updateUser', user)
     .pipe(
       catchError(error => {
-        console.log('Error caught while updating member: ' + error.error)
+        console.log('Error caught while updating user: ' + error.error)
         return of();
       })
     )
