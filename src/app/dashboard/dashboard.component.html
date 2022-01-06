@@ -1,11 +1,11 @@
 <div class="grid-container">
   <mat-grid-list cols="3" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile *ngFor="let user of users" [colspan]="cols | async" [rowspan]="1">
       <mat-card class="dashboard-card">
         <mat-card-title-group>
-          <mat-card-title>{{card.title}}</mat-card-title>
-          <mat-card-subtitle>{{card.age}}</mat-card-subtitle>
-          <img mat-card-md-image src="{{card.image}}">
+          <mat-card-title>{{user.firstName}}</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+          <img mat-card-md-image src="/assets/{{user.imageUrl}}">
         </mat-card-title-group>
         <mat-card-content class="dashboard-card-content">
         </mat-card-content>

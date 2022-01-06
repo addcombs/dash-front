@@ -1,0 +1,13 @@
+.table-container{
+    min-height: 1vh;
+}
+
+table {
+    width: 100%;
+}
+
+.add-button {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}

@@ -8,7 +8,7 @@ import { User } from '../shared/models/User';
 })
 export class HttpService {
 
-  private cassandraUrl = "http://localhost:8080";
+  private cassandraUrl = "http://localhost:1111";
 
   constructor(
     private http: HttpClient
@@ -18,7 +18,7 @@ export class HttpService {
     return this.http.get<User[]>(this.cassandraUrl + '/users')
     .pipe(
       catchError(error => {
-        console.log('Error caught while getting users: ' + error.error)
+        console.log(error)
         return of();
       })
     )
@@ -28,17 +28,17 @@ export class HttpService {
     return this.http.post<User>(this.cassandraUrl + '/addUser', user)
     .pipe(
       catchError(error => {
-        console.log('Error caught while creating user: ' + error.error)
+        console.log(error)
         return of();
       })
     )
   }
 
-  removeUser(userId: String): Observable<User> {
+  removeUser(userId: number): Observable<User> {
     return this.http.delete<User>(this.cassandraUrl + '/removeUser/' + userId)
     .pipe(
       catchError(error => {
-        console.log('Error caught while deleting user: ' + error.error)
+        console.log(error)
         return of();
       })
     )
@@ -48,7 +48,7 @@ export class HttpService {
     return this.http.put<User>(this.cassandraUrl + '/updateUser', user)
     .pipe(
       catchError(error => {
-        console.log('Error caught while updating user: ' + error.error)
+        console.log(error)
         return of();
       })
     )

@@ -17,14 +17,17 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
 import { CoreModule } from './core/core.module';
-import { NewUserComponent } from './new-user/new-user.component';
+import { NewUserComponent } from './users/new-user/new-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListUsersComponent } from './users/list-users/list-users.component';
 
 const routes: Routes = [
   { path: 'home', component: DashboardComponent },
+  { path: 'users', component: ListUsersComponent },
   { path: 'new-user', component: NewUserComponent },
-  { path: '', redirectTo: '/new-user', pathMatch: 'full'}
+  { path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -32,7 +35,8 @@ const routes: Routes = [
     AppComponent,
     DashboardComponent,
     NavigationComponent,
-    NewUserComponent
+    NewUserComponent,
+    ListUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,7 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    MatTableModule,
     LayoutModule,
     CoreModule,
     ReactiveFormsModule,

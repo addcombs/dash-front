@@ -1,0 +1,31 @@
+<div class="form-container">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>User Id</mat-label>
+        <input matInput formControlName="userId">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Image Filename</mat-label>
+        <input matInput formControlName="imageUrl">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Birthdate</mat-label>
+        <input matInput formControlName="birthdate">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-button type="submit" [disabled]="!formGroup.valid" color="primary">Submit</button>
+    </div>
+  </form>
+</div>
