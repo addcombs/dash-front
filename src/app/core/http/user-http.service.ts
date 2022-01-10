@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of} from 'rxjs';
-import { User } from '../shared/models/User';
+import { User } from 'src/app/shared/models/User';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class UserHttpService {
 
   private cassandraUrl = "http://localhost:1111";
 
