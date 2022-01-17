@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from './core/http.service';
-import { User } from './shared/models/User';
 
 @Component({
   selector: 'app-root',

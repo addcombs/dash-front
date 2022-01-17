@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from 'src/app/core/http.service';
+import { UserHttpService } from 'src/app/core/http/user-http.service';
 import { User } from 'src/app/shared/models/User';
 
 
@@ -12,14 +12,14 @@ export class ListUsersComponent implements OnInit {
 
   public users: User[] = [];
 
-  constructor(private httpService : HttpService) { }
+  constructor(private userHttpService : UserHttpService) { }
 
   ngOnInit(): void {
     this.getAllUsers();
   }
 
   getAllUsers(): void {
-    this.httpService.getAllUsers()
+    this.userHttpService.getAllUsers()
       .subscribe((users: User[]) => {
         this.users = users;
       });
@@ -30,7 +30,7 @@ export class ListUsersComponent implements OnInit {
   }
 
   deleteUser(userId: number): void {
-    this.httpService.removeUser(userId)
+    this.userHttpService.removeUser(userId)
       .subscribe(() => {
         this.getAllUsers();
       });

@@ -25,7 +25,7 @@ export class UserHttpService {
   }
 
   createNewUser(user: User): Observable<User> {
-    return this.http.post<User>(this.cassandraUrl + '/addUser', user)
+    return this.http.post<User>(this.cassandraUrl + '/add-user', user)
     .pipe(
       catchError(error => {
         console.log(error)
@@ -35,7 +35,7 @@ export class UserHttpService {
   }
 
   removeUser(userId: number): Observable<User> {
-    return this.http.delete<User>(this.cassandraUrl + '/removeUser/' + userId)
+    return this.http.delete<User>(this.cassandraUrl + '/remove-user/' + userId)
     .pipe(
       catchError(error => {
         console.log(error)
@@ -45,7 +45,7 @@ export class UserHttpService {
   }
 
   updateUser(user: User): Observable<User>{
-    return this.http.put<User>(this.cassandraUrl + '/updateUser', user)
+    return this.http.put<User>(this.cassandraUrl + '/update-user', user)
     .pipe(
       catchError(error => {
         console.log(error)

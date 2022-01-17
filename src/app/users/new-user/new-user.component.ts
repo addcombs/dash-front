@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpService } from '../../core/http.service';
+import { Router } from '@angular/router';
+import { UserHttpService } from 'src/app/core/http/user-http.service';
 import { User } from '../../shared/models/User';
 
 @Component({
@@ -11,7 +12,8 @@ import { User } from '../../shared/models/User';
 export class NewUserComponent {
 
   constructor(
-    private httpService: HttpService
+    private userHttpService: UserHttpService,
+    private router: Router
   ) { }
 
   public formGroup = new FormGroup({
@@ -40,16 +42,20 @@ export class NewUserComponent {
   });
 
   public onSubmit(): void {
-    const user : User = this.formGroup.value;
-    user.lastName = "Combs";
-    this.httpService.createNewUser(user).subscribe({
-      next(user){
-        console.log("User added " + user.firstName + " " + user.lastName)
-      },
-      error(msg) {
-        console.log("Error: " + msg);
-      }
-    });
+
+    if(this.formGroup.valid){
+      const user : User = this.formGroup.value;
+      user.lastName = "Combs";
+      this.userHttpService.createNewUser(user).subscribe({
+        next(user){
+          console.log("User added " + user.firstName + " " + user.lastName)
+        },
+        error(msg) {
+          console.log("Error: " + msg);
+        }
+      });
+      this.router.navigate(['users']);
+    }
   }
 
 }

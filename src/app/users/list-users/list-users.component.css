@@ -1,13 +1,16 @@
 .table-container{
     min-height: 1vh;
-}
-
-table {
-    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 25px
 }
 
 .add-button {
     position: absolute;
     right: 25px;
     bottom: 25px;
+}
+
+table {
+    width: 100%;
 }

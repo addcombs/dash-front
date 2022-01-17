@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { HttpService } from '../core/http.service';
 import { User } from '../shared/models/User';
+import { UserHttpService } from '../core/http/user-http.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private httpService: HttpService
+    private userHttpService: UserHttpService
   ) { }
 
   public users: User[] = [];
@@ -33,14 +33,14 @@ export class DashboardComponent implements OnInit {
   );
 
   getAllUsers(): void {
-    this.httpService.getAllUsers()
+    this.userHttpService.getAllUsers()
       .subscribe((users: User[]) => {
         this.users = users;
       });
   }
 
   createNewUser(id: string, fname: string, lname: string, imageurl: string, birthdate: string) {
-    this.httpService.createNewUser(new User(id, fname, lname, imageurl, new Date(birthdate)))
+    this.userHttpService.createNewUser(new User(id, fname, lname, imageurl, new Date(birthdate)))
       .subscribe();
   }
 
