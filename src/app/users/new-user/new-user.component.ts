@@ -30,8 +30,6 @@ export class NewUserComponent {
     ]),
     imageUrl: new FormControl('', [
 
-      Validators.required,
-
     ]),
     birthdate: new FormControl('', [
 

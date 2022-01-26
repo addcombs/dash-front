@@ -5,7 +5,7 @@
         <mat-card-title-group>
           <mat-card-title>{{user.firstName}}</mat-card-title>
           <mat-card-subtitle></mat-card-subtitle>
-          <img mat-card-md-image src="/assets/{{user.imageUrl}}">
+          <img *ngIf="user.imageUrl" mat-card-md-image src="/assets/{{user.imageUrl}}">
         </mat-card-title-group>
         <mat-card-content class="dashboard-card-content">
         </mat-card-content>
